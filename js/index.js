@@ -18,3 +18,16 @@ pageBody.addEventListener('keydown', (event) => {
 
 });
 
+//Wheel / make font size smaller for h1 and changes first 'p' color to black
+const title = document.querySelector('h1');
+
+pageBody.addEventListener('wheel', (event) => {
+    title.style.fontSize = '22px';
+
+    console.log('font size changed')
+
+    loadFontColor.style.color = 'black';
+
+    event.stopPropagation();
+});
+
