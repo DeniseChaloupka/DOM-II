@@ -13,6 +13,10 @@ navAnchors.addEventListener('mouseleave', () => {
     console.log('default nav bar')
 });
 
+navAnchors.addEventListener('click', (event) => {
+    event.preventDefault();
+});
+
 
 //Key Down / Press any key for a secret message for any plagerizers
 const pageBody = document.querySelector('body');
@@ -37,9 +41,10 @@ pageBody.addEventListener('wheel', () => {
 //Drag & Drop / drags the second image
 const dragImage = document.querySelector('.content-section img')
 
-dragImage.addEventListener('drag', () => {
-    console.log('draggaing')
+dragImage.addEventListener('drag', (event) => {
+    console.log('dragging')
 
+    event.stopPropagation();
 
 }, false);
 
@@ -71,7 +76,7 @@ window.addEventListener('load', () => {
 });
 
 //Focus / changes input background to grey and text to green
-const name = document.querySelector('input')
+const name = document.querySelector('.header-input')
 name.addEventListener('focus', () => {
     event.target.style.background = 'lightgrey';
     event.target.style.color = 'green';
@@ -89,14 +94,6 @@ name.addEventListener('focus', () => {
 });
 
 //Resize
-const lastImage = document.querySelector('.content-destination img')
-
-name.addEventListener('blur', (event) => {
-    event.target.style.background = 'lightgrey';
-    event.target.style.color = 'green';
-
-    console.log('input changed to corrected colors')
-});
 
 window.addEventListener('resize', () => {
     console.log('screen has been resized')
@@ -114,6 +111,13 @@ window.addEventListener('scroll', () => {
     console.log('screen has scrolled')
 });
 
+//Select / type some text in the bottom left box and select a part of it, it will return a console log
+const footerInput = document.querySelector(".footer-input")
+
+footerInput.addEventListener('select', () => {
+    console.log(`something was selected`)
+})
+
 //Double Click / makes font size of title unreasonably big
 title.addEventListener('dblclick', (event) => {
     if (title.style.fontSize < '125px') {
@@ -125,3 +129,5 @@ title.addEventListener('dblclick', (event) => {
 
     event.stopPropagation();
 })
+
+const anchors = document.querySelectorAll('a');
