@@ -64,3 +64,13 @@ window.addEventListener('load', (event) => {
     event.stopPropagation();
 });
 
+//Focus / changes input background to grey and text to green
+const name = document.querySelector('input')
+name.addEventListener('focus', (event) => {
+    event.target.style.background = 'lightgrey';
+    event.target.style.color = 'green';
+
+    console.log('input changed to corrected colors')
+
+    event.stopPropagation();
+});
