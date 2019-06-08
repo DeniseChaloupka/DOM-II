@@ -2,17 +2,23 @@
 //Mouse Over / changes anchor colors
 const navAnchors = document.querySelector('.nav');
 
-navAnchors.addEventListener('mouseover', (event) => {
-    navAnchors.style.backgroundColor = 'yellow';
+navAnchors.addEventListener('mouseover', () => {
+    navAnchors.style.backgroundColor = 'gold';
     console.log('gold nav bar')
     
 });
+
+navAnchors.addEventListener('mouseleave', () => {
+    navAnchors.style.backgroundColor = 'white';
+    console.log('default nav bar')
+});
+
 
 //Key Down / Press any key for a secret message for any plagerizers
 const pageBody = document.querySelector('body');
 const noPlagerismFont = document.querySelector('.footer p');
 
-pageBody.addEventListener('keydown', (event) => {
+pageBody.addEventListener('keydown', () => {
     noPlagerismFont.textContent = 'Copyright Fun Bus 2019. https://www.copyright.gov/help/faq/definitions.html';
     console.log('alerted plagerizers')
 
@@ -21,7 +27,7 @@ pageBody.addEventListener('keydown', (event) => {
 //Wheel / make font size smaller for h1 
 const title = document.querySelector('h1');
 
-pageBody.addEventListener('wheel', (event) => {
+pageBody.addEventListener('wheel', () => {
     title.style.fontSize = '22px';
 
     console.log('font size changed')
@@ -31,13 +37,13 @@ pageBody.addEventListener('wheel', (event) => {
 //Drag & Drop / drags the second image
 const dragImage = document.querySelector('.content-section img')
 
-dragImage.addEventListener('drag', (event) => {
+dragImage.addEventListener('drag', () => {
     console.log('draggaing')
 
 
 }, false);
 
-dragImage.addEventListener("dragstart", (event) => {
+dragImage.addEventListener("dragstart", () => {
     dragged = event.target;
     event.target.style.opacity = .1;
 
@@ -46,7 +52,7 @@ dragImage.addEventListener("dragstart", (event) => {
 
 }, false);
 
-dragImage.addEventListener("dragend", (event) => {
+dragImage.addEventListener("dragend", () => {
     event.target.style.opacity = '3%';
 
     console.log('drag end')
@@ -57,31 +63,65 @@ dragImage.addEventListener("dragend", (event) => {
 //Load / 
 const loadFontColor = document.querySelector('p')
 
-window.addEventListener('load', (event) => {
-    console.log('text is loaded as white')
-    loadFontColor.style.color = 'white';
+window.addEventListener('load', () => {
+    console.log('text is loaded as yellow')
+    loadFontColor.style.color = 'yellow';
 
-    event.stopPropagation();
+    
 });
 
 //Focus / changes input background to grey and text to green
 const name = document.querySelector('input')
-name.addEventListener('focus', (event) => {
+name.addEventListener('focus', () => {
     event.target.style.background = 'lightgrey';
     event.target.style.color = 'green';
 
     console.log('input changed to corrected colors')
 
+    name.addEventListener('blur', (event) => {
+        event.target.style.background = 'white';
+        event.target.style.color = 'black';
+        
+        console.log('input changed to default colors')
+    })
+
     
 });
 
-/Resize /
+//Resize
 const lastImage = document.querySelector('.content-destination img')
 
-window.addEventListener('resize', (event) => {
-    console.log(heightOutput, widthOutput)
+name.addEventListener('blur', (event) => {
+    event.target.style.background = 'lightgrey';
+    event.target.style.color = 'green';
 
+    console.log('input changed to corrected colors')
+});
+
+window.addEventListener('resize', () => {
+    console.log('screen has been resized')
     
 });
 
  
+//Scroll
+
+let bodyBG = document.querySelector('body')
+
+window.addEventListener('scroll', () => {
+    bodyBG.style.backgroundColor = 'lightgrey';
+
+    console.log('screen has scrolled')
+});
+
+//Double Click / makes font size of title unreasonably big
+title.addEventListener('dblclick', (event) => {
+    if (title.style.fontSize < '125px') {
+        title.style.fontSize = '125px';
+    }
+    else {
+        title.style.fontSize = '32px';
+    }
+
+    event.stopPropagation();
+})
