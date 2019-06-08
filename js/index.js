@@ -28,5 +28,31 @@ pageBody.addEventListener('wheel', (event) => {
 
 });
 
+//Drag & Drop / drags the second image
+const dragImage = document.querySelector('.content-section img')
+
+dragImage.addEventListener('drag', (event) => {
+    console.log('draggaing')
+
+
+}, false);
+
+dragImage.addEventListener("dragstart", (event) => {
+    dragged = event.target;
+    event.target.style.opacity = .1;
+
+    console.log('drag start')
+
+
+}, false);
+
+dragImage.addEventListener("dragend", (event) => {
+    event.target.style.opacity = '3%';
+
+    console.log('drag end')
+
+
+}, false);
+
 
 
