@@ -54,5 +54,13 @@ dragImage.addEventListener("dragend", (event) => {
 
 }, false);
 
+//Load / 
+const loadFontColor = document.querySelector('p')
 
+window.addEventListener('load', (event) => {
+    console.log('text is loaded as white')
+    loadFontColor.style.color = 'white';
+
+    event.stopPropagation();
+});
 
