@@ -72,5 +72,16 @@ name.addEventListener('focus', (event) => {
 
     console.log('input changed to corrected colors')
 
-    event.stopPropagation();
+    
 });
+
+/Resize /
+const lastImage = document.querySelector('.content-destination img')
+
+window.addEventListener('resize', (event) => {
+    console.log(heightOutput, widthOutput)
+
+    
+});
+
+ 
